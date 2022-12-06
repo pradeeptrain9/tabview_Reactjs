@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "policyname": "authentication",
+    "content": "have to be updated"
+  },
+  {
+    "id": 2,
+    "policyname": "security",
+    "content": "same as above"
+  }
+]

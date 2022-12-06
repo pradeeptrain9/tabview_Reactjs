@@ -3,7 +3,7 @@ import BootstrapTable from "react-bootstrap-table-next";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function Association() {
+function Resources() {
   const [showData, setshowData] = useState([]);
   const apiUrl = "https://jsonplaceholder.typicode.com/todos/";
   // let displayData;
@@ -13,7 +13,7 @@ export default function Association() {
   function displayJson() {
     axios(apiUrl).then((response) => {
       //console.log(response);
-      setshowData(response.data); // data is coming fro response
+      setshowData(response.data); // data is coming from response
     });
   }
 
@@ -40,3 +40,5 @@ export default function Association() {
     </div>
   );
 }
+
+export default Resources;
