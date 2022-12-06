@@ -10,7 +10,7 @@ import Association from "./Association";
 import AssignedNodes from "./AssignedNodes";
 
 export default function MultiTabView() {
-  const [value, setValue] = React.useState("1");
+  const [value, setValue] = React.useState("1")
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

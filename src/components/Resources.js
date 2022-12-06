@@ -2,6 +2,7 @@ import React from "react";
 import BootstrapTable from "react-bootstrap-table-next";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import paginationFactory from "react-bootstrap-table2-paginator";
 
 function Resources() {
   const [showData, setshowData] = useState([]);
@@ -36,6 +37,9 @@ function Resources() {
         striped
         hover
         condensed
+        pagination={paginationFactory({
+          sizePerPage: 15,
+        })}
       />
     </div>
   );
