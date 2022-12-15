@@ -30,7 +30,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export default function Association() {
+export default function Assests() {
   // const [showdata, setshowdata] = React.useState([]);
   // const apiUrl = "https://jsonplaceholder.typicode.com/todos/";
   // const getdata = async () => {
@@ -51,24 +51,44 @@ export default function Association() {
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>User Attribute Name</StyledTableCell>
-              <StyledTableCell>Type</StyledTableCell>
-              <StyledTableCell>Asset Atrribute name</StyledTableCell>
+              <StyledTableCell>Asset Name</StyledTableCell>
+              <StyledTableCell>Owner</StyledTableCell>
               <StyledTableCell>Type</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            
-                      <StyledTableRow >
+            {datajson.map((item) => {
+              return (
+                <>
+                  {item.assets.map((asset) => {
+                    return (
+                      <StyledTableRow key={item.policyID}>
                         <StyledTableCell component="th" scope="row">
-                          AIT Pune
+                          {asset.name}
                         </StyledTableCell>
-                        <StyledTableCell>UA</StyledTableCell>
-              <StyledTableCell>AIT Pune</StyledTableCell>
-              <StyledTableCell>OA</StyledTableCell>
+                        <StyledTableCell>{asset.owner}</StyledTableCell>
+                        <StyledTableCell>{asset.type}</StyledTableCell>
                       </StyledTableRow>
-                
-             
+                    );
+                  })}
+                </>
+                // <StyledTableRow key={item.policyID}>
+                //   <StyledTableCell component="th" scope="row">
+                //     {item.policyID}
+                //   </StyledTableCell>
+                //   <StyledTableCell >{item.nodes.map(node => {
+                //     return (
+                //       <div>{node.name}</div>
+                //     )
+                //   })}</StyledTableCell>
+                //   <StyledTableCell >{item.nodes.map(node => {
+                //     return (
+                //       <div>{node.type}</div>
+                //      )
+                //   }) }</StyledTableCell>
+                // </StyledTableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </TableContainer>

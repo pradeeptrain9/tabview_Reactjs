@@ -1,49 +1,49 @@
 import React, { useEffect, useState } from "react";
-import BootstrapTable from "react-bootstrap-table-next";
-import axios from "axios";
-import paginationFactory from "react-bootstrap-table2-paginator";
+import datajson from "../datajson.json";
+import Stack from "react-bootstrap/Stack";
+
 
 function PolicyDetails() {
   const [showData, setshowData] = useState([]);
-  const apiUrl = "https://jsonplaceholder.typicode.com/todos/";
-  // let displayData;
+  const [status, setstatus] = useState("active");
+  //const apiUrl = "https://jsonplaceholder.typicode.com/todos/";
+  let displayData;
   useEffect(() => {
     displayJson();
   }, []);
   function displayJson() {
-    axios(apiUrl).then((response) => {
-      //console.log(response);
-      setshowData(response.data); // data is coming fro response
+    displayData = datajson.map((object) => {
+      return (
+        <div key={object.policyID}>
+          <h6>Name</h6>
+          <Stack spacing={2} className="mx-auto" width='250px'>
+            <div className="bg-light border">{object.name}</div>
+          </Stack>
+          <br />
+          <h6>Policy Status</h6>
+          <select  className="custom-select" onChange={(event) => {
+            const selectedstatus = event.target.value;
+            setstatus(selectedstatus);
+          }}>
+            <option value="active">Active</option>
+            <option value="block">Block</option>
+          </select>
+          
+          <br />
+          <br />
+          <h6>Description</h6>
+          <Stack gap={3} className="mx-auto">
+            <div className="bg-light border">{object.description}</div>
+          </Stack>
+          <br />
+        </div>
+      );
     });
+    setshowData(displayData);
   }
 
-  const columns = [
-    {
-      dataField: "id",
-      text: "SNO",
-      sort: true,
-    },
-    {
-      dataField: "title",
-      text: "Title",
-      sort: true,
-    },
-  ];
-  return (
-    <div>
-      <BootstrapTable
-        keyField="id"
-        data={showData}
-        columns={columns}
-        striped
-        hover
-        condensed
-        pagination={paginationFactory({
-          sizePerPage:15,
-        })}
-      />
-    </div>
-  );
+  
+  return <div>{showData}</div>;
 }
 
 export default PolicyDetails;

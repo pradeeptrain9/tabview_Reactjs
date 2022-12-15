@@ -3,14 +3,17 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import { TabPanel, TabContext } from "@mui/lab";
-import Assests, { } from "./Resources";
+import Assests from "./Assests";
 import PolicyDetails from "./PolicyDetails";
 import PolicyConfigurations from "./PolicyConfiguration";
 import Association from "./Association";
 import AssignedNodes from "./AssignedNodes";
+import { Button } from "@mui/material";
+import {useNavigate} from "react-router-dom";
 
 export default function MultiTabView() {
-  const [value, setValue] = React.useState("1")
+  const navigate = useNavigate();
+  const [value, setValue] = React.useState("1");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -28,18 +31,33 @@ export default function MultiTabView() {
             aria-label="secondary tabs example"
             centered
           >
-            <Tab label="PolicyDetails" value="1" />
-            <Tab label="PolicyConfigurations" value="2" />
+            <Tab label="Policy Details" value="1" />
+            <Tab label="Policy Configurations" value="2" />
             <Tab label="Associstion" value="3" />
-            <Tab label="AssignedNodes" value="4" />
-            <Tab label="Resources" value="5" />
+            <Tab label="Assigned Nodes" value="4" />
+            <Tab label="Assets" value="5" />
+            <Button onClick={() => {
+              navigate('/edit');
+            }}>edit</Button>
           </Tabs>
         </Box>
-        <TabPanel value="1"><PolicyDetails/></TabPanel>
-        <TabPanel value="2"><PolicyConfigurations/></TabPanel>
-        <TabPanel value="3"><Association/></TabPanel>
-        <TabPanel value="4"><AssignedNodes/></TabPanel>
-        <TabPanel value="5"><Assests/></TabPanel>
+        <TabPanel value="1">
+          <PolicyDetails />
+        </TabPanel>
+        <TabPanel value="2">
+          <PolicyConfigurations />
+        </TabPanel>
+        <TabPanel value="3">
+          <Association />
+        </TabPanel>
+        <TabPanel value="4">
+          <AssignedNodes />
+        </TabPanel>
+        <TabPanel value="5">
+          <Assests />
+        </TabPanel>
+        
+        
       </TabContext>
     </Box>
   );

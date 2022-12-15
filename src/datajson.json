@@ -1,0 +1,61 @@
+[
+  {
+    "policyID": 1,
+    "name": "Mobile policy",
+    "description": "Secure mobile protection",
+    "nodes": [
+      {
+        "nodeID": 1,
+        "name": "node1",
+        "type": "PC"
+      },
+      {
+        "nodeID": 2,
+        "name": "node2",
+        "type": "PC"
+      },
+      {
+        "nodeID": 3,
+        "name": "node3",
+        "type": "OA"
+      },
+      {
+        "nodeID": 4,
+        "name": "node4",
+        "type": "UA"
+      }
+    ],
+    "assignments": [
+      {
+        "sourceID": 1,
+        "targetID": 4
+      },
+      {
+        "sourceID": 3,
+        "targetID": 1
+      },
+      {
+        "sourceID": 4,
+        "targetID": 1
+      }
+    ],
+    "assets": [
+      {
+        "name":"key",
+        "owner": "Pradeep",
+        "type": "text"
+      },
+      {
+        "name": "mobile",
+        "owner": "modhu",
+        "type": "digital information"
+      },
+      {
+        "name": "password",
+        "owner": "puskaraj",
+        "type": "text"
+      }
+    ]
+  }
+  
+]
