@@ -9,22 +9,25 @@ import { Stack } from "@mui/system";
 
 
 export default function RevokeAttribute() {
-  const options = [
-    "Delete Association",
-    "Delete Assignment",
-    "Delete Attribute",
-  ];
-  const [value, setValue] = React.useState(options[0]);
-  const [assignments, setassignments] = useState(false);
   
-  const top100Films = [
-    { label: "Delete Association" },
-    { label: "Delete Assignment" },
-    { label: "Delete Attribute" },
+  const [Value, setValue] = useState("");
+//   const [assignments, setassignments] = useState(false);
+  
+  const Deletetype = [
+    { label: "Delete Association", value:"1"},
+    { label: "Delete Assignment", value:"2" },
+    { label: "Delete Attribute", value:"3" },
     ];
-    const Test = () => {
-        if (assignments === true) {
+    const SelectType = () => {
+        
+        if ( Value  === Deletetype[0].label) {
+            return <Association/>
+        }
+        else if (Value === Deletetype[1].label) {
             return <AssignedNodes/>
+        }
+        else if (Value === Deletetype[2].label) {
+            return <PolicyConfiguration/>
         }
         
     }
@@ -35,15 +38,14 @@ export default function RevokeAttribute() {
       <br></br>
       <Stack>
         <Autocomplete
-          value={value}
+          value={Value}
           onChange={(event, newValue) => {
-              setValue(newValue);
-              console.log(event.target);
-            setassignments(true);
+              setValue(newValue.label);
+            
           }}
           disablePortal
           id="combo-box-demo"
-          options={top100Films}
+          options={Deletetype}
           sx={{ width: 250 }}
           renderInput={(params) => (
             <TextField {...params} label="Select Type" />
@@ -52,8 +54,7 @@ export default function RevokeAttribute() {
       </Stack>
       <>
         <br></br>
-        <Test/>
-        
+        <SelectType />
       </>
     </>
   );
